@@ -1,10 +1,6 @@
 # Function prompts the user to enter the credits for a given credit type and returns the credits entered by the user 
 def input_credits(credit_type):
-    # Initialize a variable to control the loop
-    valid = True
-
-    # Use the variable as the loop condition
-    while valid:
+    while True:
         try:
             # Prompts user to input the number of credits
             credits = int(input(f"Please enter your {credit_type} credits: "))
@@ -18,6 +14,7 @@ def input_credits(credit_type):
         # If the entered value is not an integer, print an error message to prompt the user to enter an integer value.
         except ValueError:
             print("Integer Required")
+
 
 # Intialise progression outcome counts
 progress_count, trailer_count, retriever_count, exclude_count = [0]*4
