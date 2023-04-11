@@ -1,4 +1,11 @@
-import credit_outcome as co
+# I declare that my work contains no examples of misconduct, such as plagiarism, or collusion. 
+# Any code taken from other sources is referenced within my code solution. 
+# Student ID: 20221368 w1998768
+ 
+# Date: 2023/04/11 
+
+
+import credit_outcome_functions as co
 
 
 def validate_student_id(student_id):

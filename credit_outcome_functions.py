@@ -1,3 +1,10 @@
+# I declare that my work contains no examples of misconduct, such as plagiarism, or collusion. 
+# Any code taken from other sources is referenced within my code solution. 
+# Student ID: 20221368 
+ 
+# Date: 2023/04/11 
+
+
 def get_credits_input(credit_type):
     """
     Asks the user to enter their credits for a given credit type and returns it as an integer.
