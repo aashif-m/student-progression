@@ -32,29 +32,3 @@ def print_histogram(outcomes):
         print(f"{outcome} {count} : {'*' * count}")
     print(f"{sum(outcomes.values())} outcomes in total.")
     print("----------------------------------------------------------------")
-
-def save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list):
-    credits = [pass_credits, defer_credits, fail_credits]
-    progression_list.append(credits)
-
-def print_progression_data_list(progression_list):
-    print("Part 2:")
-    for credits in progression_list:
-        pass_credits, defer_credits, fail_credits = credits
-        outcome = get_outcome(pass_credits, defer_credits)
-        print(f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}")
-
-def clear_progression_data_file():
-    with open("progression_data.txt", "w") as file:
-        file.write("")
-
-def save_progression_data_file(pass_credits, defer_credits, fail_credits):
-    with open("progression_data.txt", "a") as file:
-        outcome = get_outcome(pass_credits, defer_credits)
-        file.write(f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}\n")
-
-def print_progression_data_file():
-    print("Part 2:")
-    with open("progression_data.txt", "r") as file:
-        print(file.read())
-

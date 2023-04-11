@@ -1,5 +1,17 @@
 import credit_outcome as co
 
+def save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list):
+    credits = [pass_credits, defer_credits, fail_credits]
+    progression_list.append(credits)
+
+def print_progression_data_list(progression_list):
+    print("Part 2:")
+    for credits in progression_list:
+        pass_credits, defer_credits, fail_credits = credits
+        outcome = co.get_outcome(pass_credits, defer_credits)
+        print(f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}")
+
+
 def main():
     outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Do not progress - module retriever": 0, "Exclude": 0}
     progression_list = []
@@ -20,14 +32,14 @@ def main():
             print(outcome)
             outcomes[outcome] += 1
 
-            co.save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list)
+            save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list)
         choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
         if choice.lower() == "n":
             continue_loop = False
 
     co.print_histogram(outcomes)
 
-    co.print_progression_data_list(progression_list)
+    print_progression_data_list(progression_list)
 
 if __name__ == "__main__":
     main()
