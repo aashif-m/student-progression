@@ -2,14 +2,17 @@ import credit_outcome as co
 
 
 def validate_student_id(student_id):
-    """
-    Validate the student ID and return True if it is in the correct format.
+    """Validate the student ID and return True if it is in the correct format.
 
     The correct format is a lowercase letter 'w' followed by seven digits.
     For example: w1234567
     If the student ID is not in the correct format, print an error message and return False.
-    :param student_id: The student ID to be validated.
-    :return: True if the student ID is valid, False otherwise.
+
+    Args:
+        student_id (str): The student ID to be validated.
+
+    Returns:
+        bool: True if the student ID is valid, False otherwise.
     """
     if not student_id.startswith("w") or not student_id[1:].isdigit() or len(student_id) != 8:
         print(f"The student ID {student_id} is not in the correct format (w1234567). Please try again.")
@@ -19,13 +22,16 @@ def validate_student_id(student_id):
 
 
 def display_results(students):
-    """
-    Display the results stored in a dictionary.
+    """Display the results stored in a dictionary.
 
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.
-    :param students: A dictionary of student ID and outcome pairs.
-    :return: None
+
+    Args:
+        students (dict): A dictionary of student ID and outcome pairs.
+
+    Returns:
+        None
     """
     print("Part 4:")
     for student_id, outcome in students.items():
@@ -42,7 +48,7 @@ def main():
 
     while continue_loop:
 
-        # Input student ID and credits and lowercase the w in the beginning if it's uppercase
+        # Input student ID and convert it to lowercase
         student_id = input("Please enter the student ID (w1234567) : ").lower()
 
         # Validate the student ID
@@ -56,7 +62,7 @@ def main():
                 f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to "
                 f"overwrite or any other key to skip): ")
 
-            # If input is not 'y' then continue to next iteration of the loop
+            # If input is not 'y' then skip this student ID
             if overwrite.lower() != "y":
                 continue
 

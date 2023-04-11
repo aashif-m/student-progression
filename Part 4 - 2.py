@@ -2,14 +2,14 @@ def get_credits_input(credit_type):
     """
     Asks the user to enter their credits for a given credit type and returns it as an integer.
 
-    Parameters:
-    credit_type (str): The type of credit, pass or defer or fail.
+
+
+    Args:
+        credit_type (str): The type of credit, pass or defer or fail.
 
     Returns:
-    int: The number of credits entered by the user.
+        int: The number of credits entered by the user.
 
-    Raises:
-    ValueError: If the user enters an invalid credit value.
     """
     while True:
         try:
@@ -23,13 +23,17 @@ def get_credits_input(credit_type):
 
 
 def validate_student_id(student_id):
-    """Validates the student ID and returns True if it is in the correct format.
+    """Validate the student ID and return True if it is in the correct format.
+
+    The correct format is a lowercase letter 'w' followed by seven digits.
+    For example: w1234567
+    If the student ID is not in the correct format, print an error message and return False.
 
     Args:
         student_id (str): The student ID to be validated.
 
     Returns:
-        bool: True if the student ID is in the format w1234567, False otherwise.
+        bool: True if the student ID is valid, False otherwise.
     """
     # Check if the input is in the correct format like w1234567
     if not student_id.startswith("w") or not student_id[1:].isdigit() or len(student_id) != 8:
@@ -43,16 +47,16 @@ def get_outcome(pass_credits, defer_credits):
     """
     Determines the outcome of a student based on their pass and defer credits.
 
-    Parameters:
-    pass_credits (int): The number of credits that the student passed.
-    defer_credits (int): The number of credits that the student deferred.
+    Args:
+        pass_credits (int): The number of credits that the student passed.
+        defer_credits (int): The number of credits that the student deferred.
 
     Returns:
-    str: The outcome of the student, which can be one of the following:
-        - "Progress" if the student passed all 120 credits.
-        - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
-        - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
-        - "Exclude" if the student passed and deferred less than 60 credits in total.
+        str: The outcome of the student, which can be one of the following:
+            - "Progress" if the student passed all 120 credits.
+            - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
+            - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
+            - "Exclude" if the student passed and deferred less than 60 credits in total.
     """
     if pass_credits == 120:
         return "Progress"
@@ -65,13 +69,16 @@ def get_outcome(pass_credits, defer_credits):
 
 
 def display_results(students):
-    """
-    Display the results stored in a dictionary.
+    """Display the results stored in a dictionary.
 
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.
-    :param students: A dictionary of student ID and outcome pairs.
-    :return: None
+
+    Args:
+        students (dict): A dictionary of student ID and outcome pairs.
+
+    Returns:
+        None
     """
     print("Part 4:")
     for student_id, outcome in students.items():
@@ -90,13 +97,13 @@ def main():
         # Input student ID and convert it to lowercase
         student_id = input("Please enter the student ID (w1234567) : ").lower()
 
-        # Validate the student ID using a function
+        # Validate the student ID
         if not validate_student_id(student_id):
             continue
 
         # Check if the student ID already exists in the dictionary
         if student_id in students:
-            # Ask the user if they want to overwrite the existing outcome
+            # Prompts the user if they want to overwrite the existing outcome
             overwrite = input(
                 f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to "
                 f"overwrite or any other key to skip): ")
@@ -110,6 +117,7 @@ def main():
         defer_credits = get_credits_input("defer")
         fail_credits = get_credits_input("fail")
 
+        # Keeps count of total credits entered
         total_credits = sum([pass_credits, defer_credits, fail_credits])
 
         # Checks if total credits is equal to 120, else print that the total is incorrect
@@ -128,7 +136,9 @@ def main():
         if choice.lower() == "n":
             continue_loop = False
 
+    # Display the results
     display_results(students)
 
 
+# Call the main function
 main()

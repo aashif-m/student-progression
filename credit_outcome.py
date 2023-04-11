@@ -2,14 +2,14 @@ def get_credits_input(credit_type):
     """
     Asks the user to enter their credits for a given credit type and returns it as an integer.
 
-    Parameters:
-    credit_type (str): The type of credit, pass or defer or fail.
+
+
+    Args:
+        credit_type (str): The type of credit, pass or defer or fail.
 
     Returns:
-    int: The number of credits entered by the user.
+        int: The number of credits entered by the user.
 
-    Raises:
-    ValueError: If the user enters an invalid credit value.
     """
     while True:
         try:
@@ -31,16 +31,16 @@ def get_outcome(pass_credits, defer_credits):
     """
     Determines the outcome of a student based on their pass and defer credits.
 
-    Parameters:
-    pass_credits (int): The number of credits that the student passed.
-    defer_credits (int): The number of credits that the student deferred.
+    Args:
+        pass_credits (int): The number of credits that the student passed.
+        defer_credits (int): The number of credits that the student deferred.
 
     Returns:
-    str: The outcome of the student, which can be one of the following:
-        - "Progress" if the student passed all 120 credits.
-        - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
-        - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
-        - "Exclude" if the student passed and deferred less than 60 credits in total.
+        str: The outcome of the student, which can be one of the following:
+            - "Progress" if the student passed all 120 credits.
+            - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
+            - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
+            - "Exclude" if the student passed and deferred less than 60 credits in total.
     """
     if pass_credits == 120:
         return "Progress"
@@ -56,11 +56,11 @@ def print_histogram(outcomes):
     """
     Prints a histogram of the outcomes of the students.
 
-    Parameters:
-    outcomes (dict): A dictionary that maps each outcome to the number of students who achieved it.
+    Args:
+        outcomes (dict): A dictionary that maps each outcome to the number of students who achieved it.
 
-    Prints: str: A histogram that shows the frequency of each outcome using asterisks (*), followed by the total
-    number of outcomes.
+    Returns:
+        None
     """
     print("---------------------------------------------------------------")
     print("Histogram")
