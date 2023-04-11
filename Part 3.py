@@ -43,7 +43,7 @@ def print_progression_data_file():
         None
     """
 
-    print("Part 2:")
+    print("Part 3:")
     with open("progression_data.txt", "r") as file:
         print(file.read())
 
@@ -85,7 +85,7 @@ def main():
             save_progression_data_file(pass_credits, defer_credits, fail_credits)
 
         # Ask the user if they want to continue or quit
-        choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
+        choice = input("Do you want to continue? (enter any key to continue or enter q to quit and view results: ")
         # If they enter q (case-insensitive), set the loop variable to False
         if choice.lower() == "q":
             continue_loop = False
