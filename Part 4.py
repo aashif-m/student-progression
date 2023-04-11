@@ -1,88 +1,92 @@
-#Function prompts the user to enter the credits for a given credit type and returns the credits entered by the user 
-def input_credits(credit_type):
-    # Initialize a variable to control the loop
-    valid = True
-
-    # Use the variable as the loop condition
-    while valid:
-        try:
-            #Prompts user to input the number of credits
-            credits = int(input(f"Please enter your {credit_type} credits: "))
-
-            #Checks if the credits inputted are in the range 0, 20, 40, 60, 80, 100 and 120
-            if credits not in range (0,121, 20):
-                print("Out of range")
-            else:
-                return credits
-
-        #If the entered value is not an integer, print an error message to prompt the user to enter an integer value.
-        except ValueError:
-            print("Integer Required")
-
-# Intialise progression outcome counts
-progress_count, trailer_count, retriever_count, exclude_count = [0]*4
-
-students = {}
-
-# Initialize a variable to control the loop
-continue_loop = True
-
-while continue_loop:
-
-    # Input student ID and credits and lowercases the w in the beginning if it's uppercase
-    student_id = input("Please enter the student ID (w1234567) : ").lower()
+import credit_outcome as co
 
 
-    # Check if the input is in the correct format like w1234567
+def validate_student_id(student_id):
+    """
+    Validate the student ID and return True if it is in the correct format.
+
+    The correct format is a lowercase letter 'w' followed by seven digits.
+    For example: w1234567
+    If the student ID is not in the correct format, print an error message and return False.
+    :param student_id: The student ID to be validated.
+    :return: True if the student ID is valid, False otherwise.
+    """
     if not student_id.startswith("w") or not student_id[1:].isdigit() or len(student_id) != 8:
         print(f"The student ID {student_id} is not in the correct format (w1234567). Please try again.")
-        continue
+        return False
+    else:
+        return True
 
-    # Check if the student ID already exists in the dictionary
-    if student_id in students:
-         # Prompts the user if they want to overwrite the existing outcome
-        overwrite = input(f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to overwrite or any other key to skip): ")
 
-        # If input is not 'y' then continue to next iteration of the loop
-        if overwrite.lower() != "y":
+def display_results(students):
+    """
+    Display the results stored in a dictionary.
+
+    This function prints the student ID and outcome for each student in the dictionary.
+    The outcome is based on the credits passed, deferred, and failed by the student.
+    :param students: A dictionary of student ID and outcome pairs.
+    :return: None
+    """
+    print("Part 4:")
+    for student_id, outcome in students.items():
+        print(f"{student_id}: {outcome}")
+
+
+# Main function that controls the program flow
+def main():
+    # Create an empty dictionary to store student IDs and outcomes
+    students = {}
+
+    # Initialize a variable to control the loop
+    continue_loop = True
+
+    while continue_loop:
+
+        # Input student ID and credits and lowercase the w in the beginning if it's uppercase
+        student_id = input("Please enter the student ID (w1234567) : ").lower()
+
+        # Validate the student ID
+        if not validate_student_id(student_id):
             continue
 
-    # Get credits for pass, defer and fail
-    pass_credits = input_credits("pass")
-    defer_credits = input_credits("defer")
-    fail_credits = input_credits("fail")
+        # Check if the student ID already exists in the dictionary
+        if student_id in students:
+            # Prompts the user if they want to overwrite the existing outcome
+            overwrite = input(
+                f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to "
+                f"overwrite or any other key to skip): ")
 
-    # Keeps count of total credits entered
-    total_credits = sum([pass_credits, defer_credits, fail_credits])
+            # If input is not 'y' then continue to next iteration of the loop
+            if overwrite.lower() != "y":
+                continue
 
-    #Checks if total credits is equal to 120, else print that the total is incorrect
-    if total_credits != 120:
-        print("Total incorrect")
+        # Get credits for pass, defer and fail
+        pass_credits = co.get_credits_input("pass")
+        defer_credits = co.get_credits_input("defer")
+        fail_credits = co.get_credits_input("fail")
 
-    # Continue with the program if no errors
-    else:
-        # Counts and records the progression outcomes and credits in a dictionary
-        if pass_credits == 120:
-            students[student_id] = f"Progress - {pass_credits}, {defer_credits}, {fail_credits}"
-            progress_count += 1
-        elif pass_credits == 100:
-            students[student_id] = f"Progress (module trailer) - {pass_credits}, {defer_credits}, {fail_credits}"
-            trailer_count += 1
-        elif pass_credits >= 40 and defer_credits >= 20 or pass_credits >= 60 or defer_credits >= 60:
-            students[student_id] = f"Module retriever - {pass_credits}, {defer_credits}, {fail_credits}"
-            retriever_count += 1
+        # Keeps count of total credits entered
+        total_credits = sum([pass_credits, defer_credits, fail_credits])
+
+        # Checks if total credits is equal to 120, else print that the total is incorrect
+        if total_credits != 120:
+            print("Total incorrect")
+
+        # Continue with the program if no errors
         else:
-            students[student_id] = f"Exclude – {pass_credits}, {defer_credits}, {fail_credits}"
-            exclude_count += 1
+            # Calculate and store the progression outcome and credits in a dictionary
+            outcome = co.get_outcome(pass_credits, defer_credits)
+            print(outcome)
+            students[student_id] = f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}"
 
-    # Prompts the users if they want to continue or quit and view results
-    choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
-    if choice.lower() == "n":
-        continue_loop = False
+        # Prompts the users if they want to continue or quit and view results
+        choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
+        if choice.lower() == "n":
+            continue_loop = False
 
-print("Part 4:")
+    # Display the results
+    display_results(students)
 
-#Loops through each key-value pair
-for student_id, outcome in students.items():
-    # Print the student ID and outcome
-    print(f"{student_id}: {outcome}")
+
+# Call the main function
+main()
