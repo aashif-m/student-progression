@@ -1,6 +1,6 @@
 # I declare that my work contains no examples of misconduct, such as plagiarism, or collusion. 
 # Any code taken from other sources is referenced within my code solution. 
-# Student ID: 20221368 
+# Student ID: w1998768 20221368 
  
 # Date: 2023/04/11 
 
@@ -117,7 +117,7 @@ def main():
             if overwrite.lower() != "y":
                 continue
 
-        # Get credits for pass, defer and fail
+        # Get the input for pass,defer and fail credits from the user and validate it
         pass_credits = get_credits_input("pass")
         defer_credits = get_credits_input("defer")
         fail_credits = get_credits_input("fail")
@@ -125,7 +125,7 @@ def main():
         # Keeps count of total credits entered
         total_credits = sum([pass_credits, defer_credits, fail_credits])
 
-        # Checks if total credits is equal to 120, else print that the total is incorrect
+        # Check if the total credits is equal to 120
         if total_credits != 120:
             print("Total incorrect")
 
