@@ -19,6 +19,7 @@ def input_credits(credit_type):
         except ValueError:
             print("Integer Required")
 
+
 # Intialise progression outcome counts
 progress_count, trailer_count, retriever_count, exclude_count = [0]*4
 
