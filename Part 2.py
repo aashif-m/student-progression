@@ -20,14 +20,14 @@ def main():
             print(outcome)
             outcomes[outcome] += 1
 
-            co.save_progression_data(pass_credits, defer_credits, fail_credits, progression_list)
+            co.save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list)
         choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
         if choice.lower() == "n":
             continue_loop = False
 
     co.print_histogram(outcomes)
 
-    co.print_progression_data(progression_list)
+    co.print_progression_data_list(progression_list)
 
 if __name__ == "__main__":
     main()
