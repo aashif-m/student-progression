@@ -86,8 +86,8 @@ def main():
             students[student_id] = f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}"
 
         # Prompts the users if they want to continue or quit and view results
-        choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
-        if choice.lower() == "n":
+        choice = input("Do you want to continue? (enter any key to continue or enter q to quit and view results: ")
+        if choice.lower() == "q":
             continue_loop = False
 
     # Display the results

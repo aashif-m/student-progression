@@ -86,8 +86,8 @@ def main():
 
         # Ask the user if they want to continue or quit
         choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
-        # If they enter n (case-insensitive), set the loop variable to False
-        if choice.lower() == "n":
+        # If they enter q (case-insensitive), set the loop variable to False
+        if choice.lower() == "q":
             continue_loop = False
 
     # Print the histogram of the outcomes using the co module

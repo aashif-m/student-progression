@@ -2,8 +2,6 @@ def get_credits_input(credit_type):
     """
     Asks the user to enter their credits for a given credit type and returns it as an integer.
 
-
-
     Args:
         credit_type (str): The type of credit, pass or defer or fail.
 
@@ -64,7 +62,9 @@ def print_histogram(outcomes):
     """
     print("---------------------------------------------------------------")
     print("Histogram")
-    for outcome, count in outcomes.items():
-        print(f"{outcome} {count} : {'*' * count}")
+    print(f"Progress {outcomes['Progress']}  : {'*' * outcomes['Progress']}")
+    print(f"Trailer {outcomes['Progress (module trailer)']}   : {'*' * outcomes['Progress (module trailer)']}")
+    print(f"Retriever {outcomes['Do not progress - module retriever']} : {'*' * outcomes['Do not progress - module retriever']}")
+    print(f"Excluded {outcomes['Exclude']}  : {'*' * outcomes['Exclude']}")
     print(f"{sum(outcomes.values())} outcomes in total.")
     print("----------------------------------------------------------------")

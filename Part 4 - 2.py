@@ -2,8 +2,6 @@ def get_credits_input(credit_type):
     """
     Asks the user to enter their credits for a given credit type and returns it as an integer.
 
-
-
     Args:
         credit_type (str): The type of credit, pass or defer or fail.
 
@@ -132,8 +130,8 @@ def main():
             students[student_id] = f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}"
 
         # Prompts the users if they want to continue or quit and view results
-        choice = input("Do you want to continue? (enter any key to continue or enter n to quit and view results: ")
-        if choice.lower() == "n":
+        choice = input("Do you want to continue? (enter any key to continue or enter q to quit and view results: ")
+        if choice.lower() == "q":
             continue_loop = False
 
     # Display the results
