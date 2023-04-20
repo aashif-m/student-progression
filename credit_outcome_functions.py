@@ -67,11 +67,23 @@ def print_histogram(outcomes):
     Returns:
         None
     """
-    print("---------------------------------------------------------------")
+    
+    # Define the labels for the outcomes
+    outcomes_labels = ('Progress', 'Trailer', 'Retriever', 'Excluded')
+
+    # Print horizontal line
+    print("-" * 63)
     print("Histogram")
-    print(f"Progress {outcomes['Progress']}  : {'*' * outcomes['Progress']}")
-    print(f"Trailer {outcomes['Progress (module trailer)']}   : {'*' * outcomes['Progress (module trailer)']}")
-    print(f"Retriever {outcomes['Module retriever']} : {'*' * outcomes['Module retriever']}")
-    print(f"Excluded {outcomes['Exclude']}  : {'*' * outcomes['Exclude']}")
+
+    # Loop through the outcomes and print the histogram
+    for outcome, count in zip(outcomes_labels, outcomes.values()):
+        # Format the outcome and value with spaces and colons
+        outcome_value = f"{outcome} {count}"
+        # Print the outcome and value followed by asterisks
+        print(f"{outcome_value:12}: {'*' * count}")
+
+    # Print the total number of outcomes
     print(f"{sum(outcomes.values())} outcomes in total.")
-    print("----------------------------------------------------------------")
+    
+    # Print horizontal line
+    print("-" * 63)
