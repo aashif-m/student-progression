@@ -4,7 +4,6 @@
  
 # Date: 2023/04/11 
 
-
 import credit_outcome_functions as co
 
 
@@ -16,12 +15,12 @@ def validate_student_id(student_id):
     For example: w1234567
     If the student ID is not in the correct format, print an error message and return False.
 
-    Args:
-        student_id (str): The student ID to be validated.
-
-    Returns:
-        bool: True if the student ID is valid, False otherwise.
+    :param student_id: The student ID to be validated.
+    :type student_id: str
+    :return: True if the student ID is valid, False otherwise.
+    :rtype: bool
     """
+
     if not student_id.startswith("w") or not student_id[1:].isdigit() or len(student_id) != 8:
         print(f"The student ID {student_id} is not in the correct format (w1234567). Please try again.")
         return False
@@ -36,18 +35,16 @@ def display_results(students):
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.
 
-    Args:
-        students (dict): A dictionary of student ID and outcome pairs.
-
-    Returns:
-        None
+    :param students: A dictionary of student ID and outcome pairs.
+    :type students: dict
+    :return: None
     """
-    print("Part 4:")
+    
+    print("\nPart 4:")
     for student_id, outcome in students.items():
         print(f"{student_id}: {outcome}")
 
 
-# Main function that controls the program flow
 def main():
     # Create an empty dictionary to store student IDs and outcomes
     students = {}

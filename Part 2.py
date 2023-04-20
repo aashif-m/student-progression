@@ -11,15 +11,17 @@ def save_progression_data_list(pass_credits, defer_credits, fail_credits, progre
     """
     Save the credits and outcome of a student in a list.
 
-    Args:
-        pass_credits (int): The number of credits passed by the student.
-        defer_credits (int): The number of credits deferred by the student.
-        fail_credits (int): The number of credits failed by the student.
-        progression_list (list): The list to store the credits and outcome of the student.
-    
-    Returns:
-        None
+    :param pass_credits: The number of credits passed by the student.
+    :type pass_credits: int
+    :param defer_credits: The number of credits deferred by the student.
+    :type defer_credits: int
+    :param fail_credits: The number of credits failed by the student.
+    :type fail_credits: int
+    :param progression_list: The list to store the credits and outcome of the student.
+    :type progression_list: list
+    :return: None
     """
+
     credits = [pass_credits, defer_credits, fail_credits]
     progression_list.append(credits)
 
@@ -28,12 +30,11 @@ def print_progression_data_list(progression_list):
     """
     Print the progression list with outcomes.
 
-    Args:
-        progression_list (list): The list of credits and outcomes for each student.
-
-    Returns:
-        None
+    :param progression_list: The list of credits and outcomes for each student.
+    :type progression_list: list
+    :return: None
     """
+
     print("Part 2:")
     for credits in progression_list:
         pass_credits, defer_credits, fail_credits = credits
@@ -42,7 +43,6 @@ def print_progression_data_list(progression_list):
         print(f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}")
 
 
-# Define the main function
 def main():
     # Create a dictionary to store the outcomes and their counts
     outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Module retriever": 0, "Exclude": 0}

@@ -1,20 +1,20 @@
 # I declare that my work contains no examples of misconduct, such as plagiarism, or collusion. 
 # Any code taken from other sources is referenced within my code solution. 
 # Student ID: w1998768 20221368 
- 
+
 # Date: 2023/04/11 
 
 
 def get_credits_input(credit_type):
     """
-    Asks the user to enter their credits for a given credit type and returns it as an integer.
+    Gets and validates user’s credits.
 
-    Args:
-        credit_type (str): The type of credit, pass or defer or fail.
-
-    Returns:
-        int: The number of credits entered by the user.
+    :param credit_type: The type of credit, pass or defer or fail.
+    :type credit_type: str
+    :return: The number of credits entered by the user.
+    :rtype: int
     """
+
     while True:
         try:
             credits = int(input(f"Please enter your {credit_type} credits: "))
@@ -34,12 +34,12 @@ def validate_student_id(student_id):
     For example: w1234567
     If the student ID is not in the correct format, print an error message and return False.
 
-    Args:
-        student_id (str): The student ID to be validated.
-
-    Returns:
-        bool: True if the student ID is valid, False otherwise.
+    :param student_id: The student ID to be validated.
+    :type student_id: str
+    :return: True if the student ID is valid, False otherwise.
+    :rtype: bool
     """
+
     # Check if the input is in the correct format like w1234567
     if not student_id.startswith("w") or not student_id[1:].isdigit() or len(student_id) != 8:
         print(f"The student ID {student_id} is not in the correct format (w1234567). Please try again.")
@@ -52,17 +52,18 @@ def get_outcome(pass_credits, defer_credits):
     """
     Determines the outcome of a student based on their pass and defer credits.
 
-    Args:
-        pass_credits (int): The number of credits that the student passed.
-        defer_credits (int): The number of credits that the student deferred.
-
-    Returns:
-        str: The outcome of the student, which can be one of the following:
-            - "Progress" if the student passed all 120 credits.
-            - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
-            - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
-            - "Exclude" if the student passed and deferred less than 60 credits in total.
+    :param pass_credits: The number of credits that the student passed.
+    :type pass_credits: int
+    :param defer_credits: The number of credits that the student deferred.
+    :type defer_credits: int
+    :return: The outcome of the student, which can be one of the following:
+        - "Progress" if the student passed all 120 credits.
+        - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
+        - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
+        - "Exclude" if the student passed and deferred less than 60 credits in total.
+    :rtype: str
     """
+
     if pass_credits == 120:
         return "Progress"
     elif pass_credits == 100:
@@ -80,13 +81,12 @@ def display_results(students):
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.
 
-    Args:
-        students (dict): A dictionary of student ID and outcome pairs.
-
-    Returns:
-        None
+    :param students: A dictionary of student ID and outcome pairs.
+    :type students: dict
+    :return: None
     """
-    print("Part 4:")
+
+    print("\nPart 4:")
     for student_id, outcome in students.items():
         print(f"{student_id}: {outcome}")
 

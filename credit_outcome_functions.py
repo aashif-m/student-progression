@@ -7,15 +7,14 @@
 
 def get_credits_input(credit_type):
     """
-    Asks the user to enter their credits for a given credit type, validates that it is within the valid range, and returns it as an integer.
+    Gets and validates user’s credits.
 
-    Args:
-        credit_type (str): The type of credit, pass or defer or fail.
-
-    Returns:
-        int: The number of credits entered by the user.
-
+    :param credit_type: The type of credit, pass or defer or fail.
+    :type credit_type: str
+    :return: The number of credits entered by the user.
+    :rtype: int
     """
+
     while True:
         try:
             # Prompts user to input the number of credits
@@ -36,17 +35,18 @@ def get_outcome(pass_credits, defer_credits):
     """
     Determines the outcome of a student based on their pass and defer credits.
 
-    Args:
-        pass_credits (int): The number of credits that the student passed.
-        defer_credits (int): The number of credits that the student deferred.
-
-    Returns:
-        str: The outcome of the student, which can be one of the following:
-            - "Progress" if the student passed all 120 credits.
-            - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
-            - "Do not progress - module retriever" if the student passed and deferred at least 60 credits in total.
-            - "Exclude" if the student passed and deferred less than 60 credits in total.
+    :param pass_credits: The number of credits that the student passed.
+    :type pass_credits: int
+    :param defer_credits: The number of credits that the student deferred.
+    :type defer_credits: int
+    :return: The outcome of the student, which can be one of the following:
+        - "Progress" if the student passed all 120 credits.
+        - "Progress (module trailer)" if the student passed 100 credits and deferred 20 credits.
+        - "Module retriever" if the student passed and deferred at least 60 credits in total.
+        - "Exclude" if the student passed and deferred less than 60 credits in total.
+    :rtype: str
     """
+
     if pass_credits == 120:
         return "Progress"
     elif pass_credits == 100:
@@ -61,11 +61,9 @@ def print_histogram(outcomes):
     """
     Prints a histogram of the outcomes of the students.
 
-    Args:
-        outcomes (dict): A dictionary that maps each outcome to the number of students who achieved it.
-
-    Returns:
-        None
+    :param outcomes: A dictionary that maps each outcome to the number of students who achieved it.
+    :type outcomes: dict
+    :return: None
     """
     
     # Define the labels for the outcomes

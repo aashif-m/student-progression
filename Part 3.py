@@ -8,63 +8,61 @@
 import credit_outcome_functions as co
 
 
-def clear_progression_data_file():
+def clear_file(file_name):
     """
-    Clear the progression data file.
+    Clear contents of the file.
 
-    This function deletes all the content of the progression_data.txt file.
-    It is used to reset the file before saving new data.
-
-    Returns:
-        None
+    :param file_name: name of file
+    :type file_name: str
+    :return: None
     """
-    with open("progression_data.txt", "w") as file:
+
+    with open(file_name, "w") as file:
         file.write("")
 
 
-def save_progression_data_file(pass_credits, defer_credits, fail_credits):
+def save_progression_data_file(pass_credits, defer_credits, fail_credits, file_name):
     """
     Save the credits and outcome of a student in the file.
 
-    This function appends a new line to the progression_data.txt file with
-    the credits and outcome of a student.
-
-    Args:
-        pass_credits (int): The number of credits passed by the student.
-        defer_credits (int): The number of credits deferred by the student.
-        fail_credits (int): The number of credits failed by the student.
-
-    Returns:
-        None
+    :param pass_credits: The number of credits passed by the student.
+    :type pass_credits: int
+    :param defer_credits: The number of credits deferred by the student.
+    :type defer_credits: int
+    :param fail_credits: The number of credits failed by the student.
+    :type fail_credits: int
+    :param file_name: name of file
+    :type file_name: str
+    :return: None
     """
-    with open("progression_data.txt", "a") as file:
+
+    with open(file_name, "a") as file:
         # Use co module to determine outcome based on pass and defer credits
         outcome = co.get_outcome(pass_credits, defer_credits)
         file.write(f"{outcome} - {pass_credits}, {defer_credits}, {fail_credits}\n")
 
 
-def print_progression_data_file():
-    """
-    Print the progression data from the file.
+def print_progression_data_file(file_name):
+    """Print the progression data from the file.
 
-    This function reads and prints the content of the progression_data.txt file.
-
-    Returns:
-        None
+    :param file_name: name of file
+    :return: None
     """
 
     print("Part 3:")
-    with open("progression_data.txt", "r") as file:
+    with open(file_name, "r") as file:
         print(file.read())
 
 
-# Define the main function
 def main():
+    # Define the file name
+    file_name = "progression_data.txt"
+
     # Create a dictionary to store the outcomes and their counts
     outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Module retriever": 0, "Exclude": 0}
 
     # Clear the progression data file using the defined function
-    clear_progression_data_file()
+    clear_file(file_name)
 
     # Create a boolean variable to control the loop
     continue_loop = True
@@ -92,7 +90,7 @@ def main():
             outcomes[outcome] += 1
 
             # Save the progression data in the file using the defined function
-            save_progression_data_file(pass_credits, defer_credits, fail_credits)
+            save_progression_data_file(pass_credits, defer_credits, fail_credits, file_name)
 
         # Prompts the users if they want to continue or quit and view results
         choice = input("Do you want to continue? (enter any key to continue or enter q to quit and view results: ")
@@ -103,7 +101,7 @@ def main():
     co.print_histogram(outcomes)
 
     # Print the progression data from the file using the defined function
-    print_progression_data_file()
+    print_progression_data_file(file_name)
 
 
 # Call the main function
