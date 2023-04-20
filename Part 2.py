@@ -45,7 +45,7 @@ def print_progression_data_list(progression_list):
 # Define the main function
 def main():
     # Create a dictionary to store the outcomes and their counts
-    outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Do not progress - module retriever": 0, "Exclude": 0}
+    outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Module retriever": 0, "Exclude": 0}
     # Create an empty list to store the progression data
     progression_list = []
 

@@ -52,7 +52,7 @@ def get_outcome(pass_credits, defer_credits):
     elif pass_credits == 100:
         return "Progress (module trailer)"
     elif pass_credits + defer_credits >= 60:
-        return "Do not progress - module retriever"
+        return "Module retriever"
     else:
         return "Exclude"
 
@@ -71,7 +71,7 @@ def print_histogram(outcomes):
     print("Histogram")
     print(f"Progress {outcomes['Progress']}  : {'*' * outcomes['Progress']}")
     print(f"Trailer {outcomes['Progress (module trailer)']}   : {'*' * outcomes['Progress (module trailer)']}")
-    print(f"Retriever {outcomes['Do not progress - module retriever']} : {'*' * outcomes['Do not progress - module retriever']}")
+    print(f"Retriever {outcomes['Module retriever']} : {'*' * outcomes['Module retriever']}")
     print(f"Excluded {outcomes['Exclude']}  : {'*' * outcomes['Exclude']}")
     print(f"{sum(outcomes.values())} outcomes in total.")
     print("----------------------------------------------------------------")

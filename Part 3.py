@@ -61,7 +61,7 @@ def print_progression_data_file():
 # Define the main function
 def main():
     # Create a dictionary to store the outcomes and their counts
-    outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Do not progress - module retriever": 0, "Exclude": 0}
+    outcomes = {"Progress": 0, "Progress (module trailer)": 0, "Module retriever": 0, "Exclude": 0}
 
     # Clear the progression data file using the defined function
     clear_progression_data_file()
