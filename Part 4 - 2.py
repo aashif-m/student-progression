@@ -111,8 +111,7 @@ def main():
         if student_id in students:
             # Prompts the user if they want to overwrite the existing outcome
             overwrite = input(
-                f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to "
-                f"overwrite or any other key to skip): ")
+                f"The student ID {student_id} already has an outcome. Do you want to overwrite it? (enter y to overwrite or any other key to skip): ")
 
             # If input is not 'y' then skip this student ID
             if overwrite.lower() != "y":
