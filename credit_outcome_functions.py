@@ -7,7 +7,7 @@
 
 def get_credits_input(credit_type):
     """
-    Asks the user to enter their credits for a given credit type and returns it as an integer.
+    Asks the user to enter their credits for a given credit type, validates that it is within the valid range, and returns it as an integer.
 
     Args:
         credit_type (str): The type of credit, pass or defer or fail.

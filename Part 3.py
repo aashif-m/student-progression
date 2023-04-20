@@ -9,7 +9,8 @@ import credit_outcome_functions as co
 
 
 def clear_progression_data_file():
-    """Clear the progression data file.
+    """
+    Clear the progression data file.
 
     This function deletes all the content of the progression_data.txt file.
     It is used to reset the file before saving new data.
@@ -22,7 +23,8 @@ def clear_progression_data_file():
 
 
 def save_progression_data_file(pass_credits, defer_credits, fail_credits):
-    """Save the credits and outcome of a student in the file.
+    """
+    Save the credits and outcome of a student in the file.
 
     This function appends a new line to the progression_data.txt file with
     the credits and outcome of a student.
@@ -42,7 +44,8 @@ def save_progression_data_file(pass_credits, defer_credits, fail_credits):
 
 
 def print_progression_data_file():
-    """Print the progression data from the file.
+    """
+    Print the progression data from the file.
 
     This function reads and prints the content of the progression_data.txt file.
 

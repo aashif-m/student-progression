@@ -8,7 +8,8 @@ import credit_outcome_functions as co
 
 
 def save_progression_data_list(pass_credits, defer_credits, fail_credits, progression_list):
-    """Save the credits and outcome of a student in a list.
+    """
+    Save the credits and outcome of a student in a list.
 
     Args:
         pass_credits (int): The number of credits passed by the student.
@@ -18,14 +19,14 @@ def save_progression_data_list(pass_credits, defer_credits, fail_credits, progre
     
     Returns:
         None
-
     """
     credits = [pass_credits, defer_credits, fail_credits]
     progression_list.append(credits)
 
 
 def print_progression_data_list(progression_list):
-    """Print the progression list with outcomes.
+    """
+    Print the progression list with outcomes.
 
     Args:
         progression_list (list): The list of credits and outcomes for each student.

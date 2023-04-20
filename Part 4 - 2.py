@@ -14,7 +14,6 @@ def get_credits_input(credit_type):
 
     Returns:
         int: The number of credits entered by the user.
-
     """
     while True:
         try:
@@ -28,7 +27,8 @@ def get_credits_input(credit_type):
 
 
 def validate_student_id(student_id):
-    """Validate the student ID and return True if it is in the correct format.
+    """
+    Validate the student ID and return True if it is in the correct format.
 
     The correct format is a lowercase letter 'w' followed by seven digits.
     For example: w1234567
@@ -74,7 +74,8 @@ def get_outcome(pass_credits, defer_credits):
 
 
 def display_results(students):
-    """Display the results stored in a dictionary.
+    """
+    Display the results stored in a dictionary.
 
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.

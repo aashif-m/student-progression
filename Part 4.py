@@ -9,7 +9,8 @@ import credit_outcome_functions as co
 
 
 def validate_student_id(student_id):
-    """Validate the student ID and return True if it is in the correct format.
+    """
+    Validate the student ID and return True if it is in the correct format.
 
     The correct format is a lowercase letter 'w' followed by seven digits.
     For example: w1234567
@@ -29,7 +30,8 @@ def validate_student_id(student_id):
 
 
 def display_results(students):
-    """Display the results stored in a dictionary.
+    """
+    Display the results stored in a dictionary.
 
     This function prints the student ID and outcome for each student in the dictionary.
     The outcome is based on the credits passed, deferred, and failed by the student.
