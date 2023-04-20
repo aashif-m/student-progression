@@ -43,7 +43,8 @@ def save_progression_data_file(pass_credits, defer_credits, fail_credits, file_n
 
 
 def print_progression_data_file(file_name):
-    """Print the progression data from the file.
+    """
+    Print the progression data from the file.
 
     :param file_name: name of file
     :return: None
